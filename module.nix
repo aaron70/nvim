@@ -12,7 +12,7 @@ in {
   # choose a directory for your config.
   config.settings.config_directory = "${homeDir}/.config/nvim"; # Uses the configuration outside the nix-store (Mutable)
   # config.settings.config_directory = ./.; # Uses the configuration inside the nix-store (Inmutable)
-  config.extraPackages = with pkgs; [
+  config.runtimePkgs = with pkgs; [
     # Dependencies
     gcc
     cargo
@@ -28,7 +28,7 @@ in {
     # Language Servers
     lua-language-server
     nixd
-    typescript-go
+    typescript
     tailwindcss-language-server
     vscode-langservers-extracted
     jdt-language-server
