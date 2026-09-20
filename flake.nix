@@ -9,7 +9,6 @@
     wrappers.url = "github:BirdeeHub/nix-wrapper-modules";
     wrappers.inputs.nixpkgs.follows = "nixpkgs";
     import-tree.url = "github:vic/import-tree";
-
   };
 
   outputs =
@@ -39,7 +38,10 @@
       packages = forAllSystems (
         system:
         let
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
         in
         {
           neovim = self.wrappers.neovim.wrap { inherit pkgs; };
